@@ -123,6 +123,14 @@
 
 			return this;
 		},
+		clear: function(){
+
+			if (this._segments){
+				this._segments.length = 0;
+			}
+			this._lastSegment = null;
+			return this.plot();
+		},
 		getSegmentCount: function(){
 			return this._segments.lenght;
 		},
