@@ -1,4 +1,4 @@
-// svg.path.js 0.1 - Copyright (c) 2013 Nils Lagerkvist - Licensed under the MIT license
+// svg.path.js 0.2 - Copyright (c) 2013 Nils Lagerkvist - Licensed under the MIT license
 
 (function() {
 
