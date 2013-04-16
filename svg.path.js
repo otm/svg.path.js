@@ -131,7 +131,7 @@
 			return this.plot();
 		},
 		getSegmentCount: function(){
-			return this._segments.lenght;
+			return this._segments.length;
 		},
 		getSegment: function(index){
 			return this._segments[index];
