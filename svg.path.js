@@ -2,9 +2,11 @@
 
 (function() {
 
+	var slice = Function.prototype.call.bind(Array.prototype.slice);
+
 	SVG.extend(SVG.Path, {
 		M: function(p){
-			p = (arguments.length === 1) ? [p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
 			this.addSegment('M', p, false);
 
@@ -15,7 +17,7 @@
 			return this;
 		},
 		m: function(p){
-			p = (arguments.length === 1) ? [p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
 			this.addSegment('m', p, false);
 
@@ -26,15 +28,15 @@
 			return this;
 		},
 		// TODO: Solve
-	  	L: function(p) {
-	  		p = (arguments.length === 1) ? [p.x, p.y] : Array.prototype.slice.call(arguments);
+		L: function(p) {
+			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
-  			return this.addSegment('L', p, this._redrawEnabled);
+			return this.addSegment('L', p, this._redrawEnabled);
 		},
 		l: function(p) {
-	  		p = (arguments.length === 1) ? [p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
-  			return this.addSegment('l', p, this._redrawEnabled);
+			return this.addSegment('l', p, this._redrawEnabled);
 		},
 		H: function(x){
 			return this.addSegment('H', [x], this._redrawEnabled);
@@ -49,56 +51,54 @@
 			return this.addSegment('v', [y], this._redrawEnabled);
 		},
 		C: function(p1, p2, p){
-			p = (arguments.length === 3) ? [p1.x, p1.y, p2.x, p2.y, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 3) ? [p1.x, p1.y, p2.x, p2.y, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('C', p, this._redrawEnabled);
 		},
 		c: function(p1, p2, p){
-			p = (arguments.length === 3) ? [p1.x, p1.y, p2.x, p2.y, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 3) ? [p1.x, p1.y, p2.x, p2.y, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('c', p, this._redrawEnabled);
-		}, 
+		},
 		S: function(p2, p){
-			p = (arguments.length === 2) ? [p2.x, p2.y, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 2) ? [p2.x, p2.y, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('S', p, this._redrawEnabled);
 		},
 		s: function(p2, p){
-			p = (arguments.length === 2) ? [p2.x, p2.y, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 2) ? [p2.x, p2.y, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('s', p, this._redrawEnabled);
 		},
 		// Q x1 y1, x y
 		Q: function(p1, p){
-			p = (arguments.length === 2) ? [p1.x, p1.y, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 2) ? [p1.x, p1.y, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('Q', p, this._redrawEnabled);
-			var str = ', S' + p2.x + ' ' + p2.x + ', ' + p.x + ' ' + p.y
-			return this.attr('d', this.attr('d') + str);
 		},
 		q: function(p1, p){
-			p = (arguments.length === 2) ? [p1.x, p1.y, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 2) ? [p1.x, p1.y, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('q', p, this._redrawEnabled);
 		},
 		T: function(p){
-			p = (arguments.length === 1) ? [p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
-  			return this.addSegment('T', p, this._redrawEnabled);
+			return this.addSegment('T', p, this._redrawEnabled);
 		},
 		t: function(p){
-			p = (arguments.length === 1) ? [p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
-  			return this.addSegment('t', p, this._redrawEnabled);
+			return this.addSegment('t', p, this._redrawEnabled);
 		},
 		A: function(rx, ry, xAxisRotation, largeArcFlag, sweepFlag, p){
-			p = (arguments.length === 6) ? [rx, ry, xAxisRotation, largeArcFlag, sweepFlag, p.x, p.y] : Array.prototype.slice.call(arguments);
+			p = (arguments.length === 6) ? [rx, ry, xAxisRotation, largeArcFlag, sweepFlag, p.x, p.y] : slice(arguments);
 
 			return this.addSegment('A', p, this._redrawEnabled);
 		},
 		a: function(rx, ry, xAxisRotation, largeArcFlag, sweepFlag, p){
-			p = (arguments.length === 6) ? [rx, ry, xAxisRotation, largeArcFlag, sweepFlag, p.x, p.y] : Array.prototype.slice.call(arguments);
-			
+			p = (arguments.length === 6) ? [rx, ry, xAxisRotation, largeArcFlag, sweepFlag, p.x, p.y] : slice(arguments);
+
 			return this.addSegment('a', p, this._redrawEnabled);
 		},
 		Z: function(){
@@ -118,13 +118,12 @@
 			this._segments.push(segment);
 
 			if (redraw !== false){
-				this._drawSegment(segment);	
+				this._drawSegment(segment);
 			}
 
 			return this;
 		},
 		clear: function(){
-
 			if (this._segments){
 				this._segments.length = 0;
 			}
@@ -146,7 +145,7 @@
 			return this.redraw();
 		},
 		redraw: function(){
-			// reset 
+			// reset
 			this._lastSegment = null;
 			this.attr('d', '');
 
@@ -172,7 +171,6 @@
 			this._lastSegment = lastSegment;
 
 			return this.attr('d', this.attr('d') + str);
-		
 		},
 		line: function(line, options){
 			var Point = networkMap.Point;
@@ -186,6 +184,6 @@
 			this.L(new Point(line.p2.x, line.p2.y));
 			return this;
 		}
-	});	
+	});
 
-}).call(this)
+}).call(this);
