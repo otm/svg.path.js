@@ -90,7 +90,7 @@ var rect = draw.path().m({x: 100, y: 100}).v(150)
 ```
 
 ## Curveto
-Curveto commands specify a Bezier curve. There are two types of Bezier curves: Cubic and Quadratic. Quadratic Bezier curves are a special case of the Cubic bezier curves, in that the control point for each end is the same. 
+Curveto commands specify a Bezier curve. There are two types of Bezier curves: Cubic and Quadratic. Quadratic Bezier curves are a special case of the Cubic bezier curves, in that the control point for each end is the same.
 
 ### C({c1x, c1y}, {c2x, c2y}, {x, y})
 Cubic Bezier curves takes three objects. The two first objects are control points for the initial point and end point respectively in absolute coordinates. The last object is is the end point of the curveto segment.
@@ -163,7 +163,7 @@ var rect = draw.path()
 	.M({x: 100, y: 100})
 	.L({x: 150, y: 150})
 	.L({x: 100, y: 150})
-	.Z
+	.Z()
 ```
 
 Copyright: Creative Commons: Attribution-Sharealike license
