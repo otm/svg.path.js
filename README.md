@@ -9,6 +9,9 @@ svg.path.js is licensed under the terms of the MIT License.
 
 Include this plugin after including svg.js in your html document.
 
+## Examples
+There are live examples at http://otm.github.io/svg.path.js/
+
 ## Introduction
 
 Paths consist of combinations the following elements:
