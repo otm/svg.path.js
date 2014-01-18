@@ -8,7 +8,7 @@
 		M: function(p){
 			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
-			this.addSegment('M', p, false);
+			this.addSegment('M', p, this._redrawEnabled);
 
 			if (this._segments.length === 1){
 				return this.plot('M' + p[0] + ' ' + p[1]);
@@ -19,7 +19,7 @@
 		m: function(p){
 			p = (arguments.length === 1) ? [p.x, p.y] : slice(arguments);
 
-			this.addSegment('m', p, false);
+			this.addSegment('m', p, this._redrawEnabled);
 
 			if (this._segments.length === 1){
 				return this.plot('m' + p[0] + ' ' + p[1]);
