@@ -15,6 +15,56 @@
 
 	</head>
 	<body>
+		<h1>Moveto</h1>
+		<ul>
+			<li>
+				<h3><pre>
+M(10, 10)
+.L(150, 150)
+.M(10, 50)
+.L(150, 150)
+				</pre></h3>
+				<div id="moveToAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('moveToAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(150, 150)
+						.M(10, 50)
+						.L(110, 150);
+				</script>
+			</li>
+			<li>
+				<h3><pre>
+M(10, 10)
+.L(150, 150)
+.m(-10, -10)
+.L(10, 50)
+				</pre></h3>
+				<div id="moveToRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('moveToRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(150, 150)
+						.m(-40, 0)
+						.L(10, 50);
+				</script>
+			</li>
+		</ul>
+
 		<h1>Lineto</h1>
 
 		<ul>
