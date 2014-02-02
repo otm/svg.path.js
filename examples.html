@@ -15,6 +15,64 @@
 
 	</head>
 	<body>
+		<h1>Animate</h1>
+		<ul>
+			<li>
+				<h3><pre>
+.animate({delay: 10})
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z();
+				</pre></h3>
+				<div id="animate" class="paper"></div>
+				<script>
+					SVG(document.getElementById('animate'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.animate({delay: 10})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z();
+						
+						//path.animate();
+				</script>
+			</li>
+				<li>
+				<h3><pre>
+.animate({delay: 500})
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z();
+				</pre></h3>
+				<div id="animate2" class="paper"></div>
+				<script>
+					var test = SVG(document.getElementById('animate2'))
+						.size(160, 160);
+
+						var path = test.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.animate({delay: 500})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z();
+						
+						//path.animate();
+				</script>
+			</li>
+		</ul>
 		<h1>Moveto</h1>
 		<ul>
 			<li>
@@ -26,7 +84,7 @@ M(10, 10)
 				</pre></h3>
 				<div id="moveToAbs" class="paper"></div>
 				<script>
-					SVG(document.getElementById('moveToAbs'))
+					kalle = SVG(document.getElementById('moveToAbs'))
 						.size(160, 160)
 						.path()
 						.attr({ 
