@@ -144,6 +144,36 @@
 			this._segments.splice(index, 1, segment);
 			return this.redraw();
 		},
+		manualRedraw: function(redraw){
+			if (redraw === true)
+				this._redrawEnabled = false;
+
+			if (redraw === false)
+				this._redrawEnabled = true;
+
+			return !!this._redrawEnabled;
+		},
+		animate: function(options){
+			options = options || {};
+			options.duration = options.duration || '2s';
+			options.easing = options.easing || 'ease-in-out';
+			options.delay = options.delay || 100;
+
+			var path = this.node;
+			this.style({visibility: 'hidden'});
+			window.setTimeout(function(){
+				var length = path.getTotalLength();
+				path.style.transition = path.style.WebkitTransition = 'none';
+				path.style.strokeDasharray = length + ' ' + length;
+				path.style.strokeDashoffset = length;
+				path.getBoundingClientRect();
+				path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset ' + options.duration + ' ' + options.easing;
+				path.style.visibility = 'visible';
+				path.style.strokeDashoffset = '0';
+			}, options.delay);
+
+			return this;
+		},
 		redraw: function(){
 			// reset
 			this._lastSegment = null;
@@ -168,7 +198,7 @@
 				lastSegment = segment[i].type;
 			}
 
-			this._lastSegment = lastSegment;
+			this._lastSegment = lastSegment;	
 
 			return this.attr('d', this.attr('d') + str);
 		},
