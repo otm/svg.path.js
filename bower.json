@@ -1,0 +1,26 @@
+{
+  "name": "svg.path",
+  "main": "svg.path.js",
+  "version": "0.6.0",
+  "homepage": "https://github.com/otm/svg.path.js",
+  "authors": [
+    { "name": "Nils Lagerkvist", "homepage": "https://github.com/otm"},
+    { "name": "dotnetCarpenter", "email": "jon.ronnenberg@gmail.com"}
+  ],
+  "description": "A path extension for the svg.js library",
+  "keywords": [
+    "svg.js",
+    "path"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Gruntfile.js",
+    "*.json",
+    "spec",
+    "*.html",
+    "*.md"
+  ]
+}
