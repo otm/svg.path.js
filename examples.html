@@ -1,11 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8" />		
 		<script type="text/javascript" src="spec/lib/svg.js"></script>
 		<script type="text/javascript" src="svg.path.js"></script>
-		<!-- "http://raw.github.com/wout/svg.js/v0.10/dist/svg.js" -->
-
 		<style type="text/css" media="screen">
 			ul { margin: 0; padding: 0; border-bottom: 1px solid #ccc; padding-bottom: 30px; }
     		li { list-style-type: none; width: 160px; display: inline-block; margin: 10px; }
@@ -19,11 +17,11 @@
 		<ul>
 			<li>
 				<h3><pre>
-.animate({delay: 10})
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
-.Z();
+.Z()
+.drawAnimated()
 				</pre></h3>
 				<div id="animate" class="paper"></div>
 				<script>
@@ -33,46 +31,77 @@
 						.attr({ 
 							fill: 'none',
 							stroke: '#000', 
-							'stroke-width': 2 
+							'stroke-width': 2,
 						})
-						.animate({delay: 10})
 						.M(10, 10)
 						.L(150, 10)
 						.L({x:150, y:150})
-						.Z();
-						
-						//path.animate();
+						.Z()
+						.drawAnimated();
 				</script>
+				
 			</li>
-				<li>
+			<li>
 				<h3><pre>
-.animate({delay: 500})
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
-.Z();
+.Z()
+.drawAnimated({
+	delay: 1000
+})
 				</pre></h3>
 				<div id="animate2" class="paper"></div>
 				<script>
-					var test = SVG(document.getElementById('animate2'))
-						.size(160, 160);
-
-						var path = test.path()
+					SVG(document.getElementById('animate2'))
+						.size(160, 160)
+						.path()
 						.attr({ 
 							fill: 'none',
 							stroke: '#000', 
-							'stroke-width': 2 
+							'stroke-width': 2,
 						})
-						.animate({delay: 500})
 						.M(10, 10)
 						.L(150, 10)
 						.L({x:150, y:150})
-						.Z();
-						
-						//path.animate();
+						.Z()
+						.drawAnimated({delay: 1000});
 				</script>
+				
+			</li>
+			<li>
+				<h3><pre>
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+.drawAnimated({
+	duration: 5000, 
+	easing: '=', 
+	delay: 2000
+})
+				</pre></h3>
+				<div id="animate3" class="paper"></div>
+				<script>
+					var path = SVG(document.getElementById('animate3'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2,
+						})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z()
+						.drawAnimated({duration: 5000, easing: '=', delay: 2000});
+				</script>
+				
 			</li>
 		</ul>
+
+
 		<h1>Moveto</h1>
 		<ul>
 			<li>
@@ -593,6 +622,6 @@ M(10, 80)
 						.Z();
 				</script>
 			</li>
-		</ul>
+		</ul>		
 	</body>
 </html>

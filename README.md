@@ -169,5 +169,120 @@ var rect = draw.path()
 	.Z()
 ```
 
+## Utility functions
+
+### clear()
+Clear the path from all segments.
+
+### getSegmentCount()
+Get the segment count from the path
+
+```javascript
+var rect = draw.path()
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+
+console.log('Segment count: ' + rect.getSegmentCount(1))
+```
+
+### getSegment(index)
+Get the segment with index `index` from the path
+
+```javascript
+var rect = draw.path()
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+
+var lineSegment = rect.getSegment(1)
+```
+
+### removeSegment(index)
+Remove the segement with index `index` in the path.
+
+```javascript
+var rect = draw.path()
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+
+rect.removeSegment(3)
+```
+
+### replaceSegment(index, segment)
+Replace a segment in the path with a new segment. 
+
+
+```javascript
+var rect = draw.path()
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+
+var lineSegment = rect.getSegment(1)
+rect.replaceSegment(1, rect.getSegment(2))
+rect.replaceSegment(2, lineSegment)
+```
+
+### drawAnimated(options)
+Animates the drawing of the path. It takes an optional options object which can have 
+three arguments, `duration`, `delay` and `easing`. `duration` and `delay` is in milliseconds, `easing` can 
+be one of the following:
+ *	<>: ease in and out
+ *	>: ease out
+ *	<: ease in
+ *	-: linear
+ *	=: external control
+ *	a function
+
+You can find more documentation regarfing the easing functionality in the main svg.js documentation.
+
+```javascript
+var rect = draw.path()
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+.drawAnimated({
+	delay: 3000
+})
+```
+
+### update(autoredraw)
+Get and set if the path should auto redraw when updated.
+
+```javascript
+var rect = draw.path()
+	.update(false)
+	.M({x: 100, y: 100})
+	.L({x: 150, y: 150})
+	.L({x: 100, y: 150})
+	.Z()
+
+	// nothing happens until we call redraw manually
+	rect.redraw()
+```
+
+### redraw()
+Redraw the path manually
+
+
+```javascript
+var rect = draw.path()
+	.update(false)
+	.M({x: 100, y: 100})
+	.L({x: 150, y: 150})
+	.L({x: 100, y: 150})
+	.Z()
+
+	// nothing happens until we call redraw manually
+	rect.redraw()
+```
+
 Copyright: Creative Commons: Attribution-Sharealike license
 Attributions: [MDN](https://developer.mozilla.org/en-US/docs/SVG/Attribute/d)
