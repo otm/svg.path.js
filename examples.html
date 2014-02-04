@@ -1,0 +1,627 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />		
+		<script type="text/javascript" src="spec/lib/svg.js"></script>
+		<script type="text/javascript" src="svg.path.js"></script>
+		<style type="text/css" media="screen">
+			ul { margin: 0; padding: 0; border-bottom: 1px solid #ccc; padding-bottom: 30px; }
+    		li { list-style-type: none; width: 160px; display: inline-block; margin: 10px; }
+    		h3 { margin: 0 0 10px 0; font-size: 1em; font-weight: 300; }
+			.paper { width: 161px; height: 161px; background-image: url('http://svgjs.com/test/images/grid.png'); }
+		</style>
+
+	</head>
+	<body>
+		<h1>Animate</h1>
+		<ul>
+			<li>
+				<h3><pre>
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+.drawAnimated()
+				</pre></h3>
+				<div id="animate" class="paper"></div>
+				<script>
+					SVG(document.getElementById('animate'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2,
+						})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z()
+						.drawAnimated();
+				</script>
+				
+			</li>
+			<li>
+				<h3><pre>
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+.drawAnimated({
+	delay: 1000
+})
+				</pre></h3>
+				<div id="animate2" class="paper"></div>
+				<script>
+					SVG(document.getElementById('animate2'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2,
+						})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z()
+						.drawAnimated({delay: 1000});
+				</script>
+				
+			</li>
+			<li>
+				<h3><pre>
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z()
+.drawAnimated({
+	duration: 5000, 
+	easing: '=', 
+	delay: 2000
+})
+				</pre></h3>
+				<div id="animate3" class="paper"></div>
+				<script>
+					var path = SVG(document.getElementById('animate3'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2,
+						})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z()
+						.drawAnimated({duration: 5000, easing: '=', delay: 2000});
+				</script>
+				
+			</li>
+		</ul>
+
+
+		<h1>Moveto</h1>
+		<ul>
+			<li>
+				<h3><pre>
+M(10, 10)
+.L(150, 150)
+.M(10, 50)
+.L(150, 150)
+				</pre></h3>
+				<div id="moveToAbs" class="paper"></div>
+				<script>
+					kalle = SVG(document.getElementById('moveToAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(150, 150)
+						.M(10, 50)
+						.L(110, 150);
+				</script>
+			</li>
+			<li>
+				<h3><pre>
+M(10, 10)
+.L(150, 150)
+.m(-10, -10)
+.L(10, 50)
+				</pre></h3>
+				<div id="moveToRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('moveToRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(150, 150)
+						.m(-40, 0)
+						.L(10, 50);
+				</script>
+			</li>
+		</ul>
+
+		<h1>Lineto</h1>
+
+		<ul>
+			<li>
+				<h3><pre>
+M(10, 10)
+.L(150, 150)
+				</pre></h3>
+				<div id="linetoAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('linetoAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(150, 150);
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 10)
+.l(140, 140)
+				</pre></h3>
+				<div id="linetoRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('linetoRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(140, 140);
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 10)
+.H(150)
+				</pre></h3>
+				<div id="horizontalAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('horizontalAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.H(150);
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 10)
+.h(140)
+				</pre></h3>
+				<div id="horizontalRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('horizontalRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.h(140);
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 10)
+.V(150)
+				</pre></h3>
+				<div id="verticalAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('verticalAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.V(150);
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 10)
+.v(140)
+				</pre></h3>
+				<div id="verticalRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('verticalRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.v(140);
+				</script>
+			</li>
+		</ul>
+
+
+		<h1>Curveto</h1>
+
+		<ul>
+			<li>
+				<h3><pre>
+M(10, 150)
+.C(
+   {x:10, y:10}, 
+   {x:150, y:10}, 
+   {x:150, y:150}
+)
+				</pre></h3>
+				<div id="cubicAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('cubicAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 150)
+						.C({x:10, y:10}, {x:150, y:10}, {x:150, y:150});
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 150)
+.c(
+   {x:0, y:-140}, 
+   {x:150, y:-140}, 
+   {x:140, y:0}
+)
+				</pre></h3>
+				<div id="cubicRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('cubicRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 150)
+						.c({x:0, y:-140}, {x:150, y:-140}, {x:140, y:0});
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 150)
+.Q(
+   {x:75, y:10}, 
+   {x:150, y:150}
+)
+				</pre></h3>
+				<div id="quadricAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('quadricAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 150)
+						.Q({x:75, y:10}, {x:150, y:150});
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 150)
+.q(
+   {x:75, y:-140}, 
+   {x:140, y:0}
+)
+				</pre></h3>
+				<div id="quadricRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('quadricRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 150)
+						.q({x:75, y:-140}, {x:140, y:0});
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 80)
+.C(
+   {x:10, y:10}, 
+   {x:75, y:10}, 
+   {x:75, y:80}
+)
+.S(
+   {x:150, y:150}, 
+   {x:150, y:80}
+)
+				</pre>
+				</h3>
+				<div id="cubicReflextionAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('cubicReflextionAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.C({x:10, y:10}, {x:75, y:10}, {x:75, y:80})
+						.S({x:150, y:150}, {x:150, y:80});
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 80)
+.C(
+   {x:10, y:10}, 
+   {x:75, y:10}, 
+   {x:75, y:80}
+)
+.s(
+   {x:75, y:80}, 
+   {x:75, y:0}
+)
+				</pre>
+				</h3>
+				<div id="cubicReflextionRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('cubicReflextionRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.C({x:10, y:10}, {x:75, y:10}, {x:75, y:80})
+						.s({x:75, y:80}, {x:75, y:0});
+				</script>
+			</li>
+			<li>
+				<h3><pre>
+M(10, 80)
+.Q(
+   {x:40, y:10}, 
+   {x:80, y:80}
+)
+.T({x:150, y:80});
+				</pre>
+				</h3>
+				<div id="quadricReflextionAbs" class="paper"></div>
+				<script>
+					SVG(document.getElementById('quadricReflextionAbs'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.Q({x:40, y:10}, {x:80, y:80})
+						.T({x:150, y:80});
+				</script>
+			</li>
+
+			<li>
+				<h3><pre>
+M(10, 80)
+.Q(
+   {x:40, y:10}, 
+   {x:80, y:80}
+)
+.t(
+   {x:70, y:0}
+)
+				</pre>
+				</h3>
+				<div id="quadricReflextionRel" class="paper"></div>
+				<script>
+					SVG(document.getElementById('quadricReflextionRel'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.Q({x:40, y:10}, {x:80, y:80})
+						.t({x:70, y:0});
+				</script>
+			</li>
+		</ul>
+
+		<h1>Arcto</h1>
+		<ul>
+			<li>
+				<h3><pre>
+M(10, 80)
+.A(
+   150, 
+   150, 
+   0, 
+   0, 
+   0, 
+   {x:150, y:80}
+)
+				</pre></h3>
+				<div id="arcAbs1" class="paper"></div>
+				<script>
+					SVG(document.getElementById('arcAbs1'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.A(150, 150, 0, 0, 0, 150, 80);
+				</script>
+			</li>
+			<li>
+				<h3><pre>
+M(10, 80)
+.A(
+   150, 
+   150, 
+   0, 
+   0, 
+   1, 
+   {x:150, y:80}
+)
+				</pre></h3>
+				<div id="arcAbs2" class="paper"></div>
+				<script>
+					SVG(document.getElementById('arcAbs2'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.A(150, 150, 0, 0, 1, 150, 80);
+				</script>
+			</li>
+			<li>
+				<h3><pre>
+M(10, 80)
+.A(
+   50, 
+   50, 
+   0, 
+   1, 
+   0, 
+   {x:150, y:80}
+)
+				</pre></h3>
+				<div id="arcAbs3" class="paper"></div>
+				<script>
+					SVG(document.getElementById('arcAbs3'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.A(50, 50, 0, 1, 0, 150, 80);
+				</script>
+			</li>
+			<li>
+				<h3><pre>
+M(10, 80)
+.A(
+   150, 
+   75, 
+   30, 
+   0, 
+   0, 
+   {x:150, y:80}
+)
+				</pre></h3>
+				<div id="arcAbs4" class="paper"></div>
+				<script>
+					SVG(document.getElementById('arcAbs4'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 80)
+						.A(150, 75, 30, 0, 0, 150, 80);
+				</script>
+			</li>
+
+		</ul>
+
+		<h1>Closepath</h1>
+		<ul>
+			<li>
+				<h3><pre>
+.M(10, 10)
+.L(150, 10)
+.L({x:150, y:150})
+.Z();
+				</pre></h3>
+				<div id="closepath" class="paper"></div>
+				<script>
+					SVG(document.getElementById('closepath'))
+						.size(160, 160)
+						.path()
+						.attr({ 
+							fill: 'none',
+							stroke: '#000', 
+							'stroke-width': 2 
+						})
+						.M(10, 10)
+						.L(150, 10)
+						.L({x:150, y:150})
+						.Z();
+				</script>
+			</li>
+		</ul>		
+	</body>
+</html>

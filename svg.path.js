@@ -1,5 +1,7 @@
-// svg.path.js 0.4 - Copyright (c) 2013 Nils Lagerkvist - Licensed under the MIT license
-
+/** svg.path.js - v0.6.0 - 2014-02-04
+ * http://otm.github.io/svg.path.js/
+ * Copyright (c) 2014 Nils Lagerkvist; Licensed under the  MIT license /
+ */
 (function() {
 
 	var slice = Function.prototype.call.bind(Array.prototype.slice);
@@ -144,7 +146,38 @@
 			this._segments.splice(index, 1, segment);
 			return this.redraw();
 		},
-		manualRedraw: function(redraw){
+		/**
+		 * Easing:
+		 *	<>: ease in and out
+		 *	>: ease out
+		 *	<: ease in
+		 *	-: linear
+		 *	=: external control
+		 *	a function
+		 */
+		drawAnimated: function(options){
+			options = options || {};
+			options.duration = options.duration || '1000';
+			options.easing = options.easing || '<>';
+			options.delay = options.delay || 0;
+			
+			var length = this.length();
+
+			this.stroke({
+				width:         2,
+				dasharray:     length + ' ' + length,
+				dashoffset:    length
+			});
+
+			var fx = this.animate(options.duration, options.easing, options.delay);
+
+			fx.stroke({
+				dashoffset: 0
+			});
+			
+			return this;
+		},
+		update: function(redraw){
 			if (redraw === true)
 				this._redrawEnabled = false;
 
@@ -152,27 +185,6 @@
 				this._redrawEnabled = true;
 
 			return !!this._redrawEnabled;
-		},
-		animate: function(options){
-			options = options || {};
-			options.duration = options.duration || '2s';
-			options.easing = options.easing || 'ease-in-out';
-			options.delay = options.delay || 100;
-
-			var path = this.node;
-			this.style({visibility: 'hidden'});
-			window.setTimeout(function(){
-				var length = path.getTotalLength();
-				path.style.transition = path.style.WebkitTransition = 'none';
-				path.style.strokeDasharray = length + ' ' + length;
-				path.style.strokeDashoffset = length;
-				path.getBoundingClientRect();
-				path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset ' + options.duration + ' ' + options.easing;
-				path.style.visibility = 'visible';
-				path.style.strokeDashoffset = '0';
-			}, options.delay);
-
-			return this;
 		},
 		redraw: function(){
 			// reset
@@ -201,18 +213,6 @@
 			this._lastSegment = lastSegment;	
 
 			return this.attr('d', this.attr('d') + str);
-		},
-		line: function(line, options){
-			var Point = networkMap.Point;
-			if (options && options.reset){
-				this.M(new Point(line.p1.x, line.p1.y));
-			}
-			else{
-				this.L(new Point(line.p1.x, line.p1.y));
-			}
-
-			this.L(new Point(line.p2.x, line.p2.y));
-			return this;
 		}
 	});
 
