@@ -1,6 +1,6 @@
 {
 	"name": "svg.path",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"description": "A path extension for the svg.js library",
 	"keywords": ["svg", "svg.js", "path"],
 	"homepage": "http://otm.github.io/svg.path.js/",

@@ -1,7 +1,7 @@
 {
   "name": "svg.path",
   "main": "svg.path.js",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "https://github.com/otm/svg.path.js",
   "authors": [
     { "name": "Nils Lagerkvist", "homepage": "https://github.com/otm"},
