@@ -125,7 +125,7 @@
 
 			return this;
 		},
-		clear: function(){
+		clearPath: function(){
 			if (this._segments){
 				this._segments.length = 0;
 			}
